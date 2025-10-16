@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <xs:element ="">
+  
+    <xs:complexType>
+      <xs:sequence>
+        <xs:elementame="offices" type="officesType"/>
+        <xs:element name="person" type="personType" maxOccurs="unbounded" minOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+   rsonKey">
+      <xs:selector xath="person"/>
+      <xs:field 
+    </xs:key
+    
+    <xs:key name="offic="offices/office"/>
+      <xs:field xpath="@code"/>
+    </xs:key>
+    
+    <xs:keyref name="officeRef" refer="officeKey">
+      <xs:selector xpath="person"/>
+      <xs:field xpath="@office"/>
+    </xs:keyref>
+  </xs:element>
+
+  <xs:complexType name="officesType">
+    <xs:seuence>
+      <xs:element name="office" type="officeType" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequene>
+  </xs:complexType>
+
+  <xs:complexType name="officeType">
+    <xs:simpleContent>
+      <xs:etension base="xs:string">
+        name="code" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="personType">
+    <xs:sequence>
+      <xs:element name="name" type="nameType"/>
+      <xs:elment name="address" type="addressType"/>
+      <xs:element name="phones" type="phonesType"/>
+    </xs:sequence>
+    <xs:attriute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="office" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType 
+    <xs:sequence>
+      <xs:element name="first" type="xs:string"/>
+      <xs:elemen name="surname" typ="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexTpe name="addressType">
+    <xs:all>
+      <xs:eement name="city" type="xs:string"/>
+      <xs:element name="street" type="xs:string"/>
+      <xs:eement name="index" type="indexType"/>
+    </xs:all>
+  </xs:complexType>
+="indexType">
+    <xs:restriction 
+      <xs:patter value="[0-{6}"/>
+      <xs:length value="6"/>
+    </xs:restriction>
+  </xs:sipleType>
+
+  <xs name="phonesType">
+    <xs:sequence>
+      <xs:element name="phone" minOccurs="0" maxOccursunbounded"/>
+    </xs:sequenceype>
+
+  <xs:complexType name="phoneType">
+    <xs:simpleCntent>
+      <xs:extension base="phoneValueType">
+        <xs:attribute name="type" use="optional">
+          <xs:sileType>
+            <xs:retriction base="xs:string"
+              <xs:enumeration value="work"
+              <xs:enumeration value="home"
+            </xs:respe>
+
+  <xs:simpleType ame="phoneValueType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{3}-\d2-\d{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
